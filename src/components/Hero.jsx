@@ -1,16 +1,38 @@
 import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/all";
+import SplitText from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
 
 const Hero = () => {
-    useGSAP(() => {
-        const heroSplit = new SplitText('.title', {type: 'chars, words'})
-    }, [])
+  useGSAP(() => {
+    const heroSplit = new SplitText(".title", { type: "chars, words" });
+    const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
+
+    heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
+
+    gsap.from(heroSplit.chars, {
+      yPercent: 100,
+      duration: 1.8,
+      ease: "expo.out",
+      stagger: 0.05,
+    });
+
+    gsap.from(paragraphSplit.lines, {
+      opacity: 0,
+      yPercent: 100,
+      duration: 1.8,
+      ease: "expo.out",
+      stagger: 0.05,
+      delay: 1,
+    });
+  }, []);
+
   return (
     <>
       <section id="hero" className="noisy">
-        <h1>Milk+</h1>
+        <h1 className="title">Milk+</h1> {/* ✅ Class added here */}
         <img
           src="/images/hero-left-leaf.png"
           alt="left-leaf"
@@ -33,9 +55,9 @@ const Hero = () => {
 
             <div className="view-cocktails">
               <p className="subtitle">
-                Our dimly lit bar exuded a cozy charm, with shelves lined with
-                gleaming bottles from around the world. <br />
-                Each cocktail was a crafted masterpiece, from smoky mezcal
+                Our dimly lit bar exudes a cozy charm, with shelves lined with
+                gleaming bottles and vintage vinyl from around the world. <br />
+                Each cocktail is a handcrafted masterpiece, from smoky mezcal
                 margaritas to delicate elderflower spritzes.
               </p>
               <a href="#cocktails">View Cocktails</a>
