@@ -69,7 +69,7 @@ const Hero = () => {
   return (
     <>
       <section id="hero" className="noisy">
-        <h1 className="title">Milk+</h1> {/* ✅ Class added here */}
+        <h1 className="title">Milk+</h1> 
         <img
           src="/images/hero-left-leaf.png"
           alt="left-leaf"
