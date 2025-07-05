@@ -9,7 +9,7 @@ const navLinks = [
  },
  {
 	id: "work",
-	title: "The Art",
+	title: "The Craft",
  },
  {
 	id: "contact",
